@@ -1,0 +1,24 @@
+server:
+  port: 8001 #服务注册中心端口号
+spring:
+  application:
+    name: register-center
+  security:
+    user:
+      name: register
+      password: qaz2019
+eureka:
+  dashboard:
+    path: /register-center
+  instance:
+    hostname: 47.102.142.176 #服务注册中心
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  server:
+    enable-self-preservation: true # 测试时关闭自我保护机制，保证不可用服务及时踢出
+    eviction-interval-timer-in-ms: 10000 #清理失效服务，10s， 默认值30秒
+  client:
+    registerWithEureka: true #是否向服务注册中心注册自己
+    fetchRegistry: true #是否检索服务
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@47.102.142.176:8001/eureka/ #注册中心的注册地址

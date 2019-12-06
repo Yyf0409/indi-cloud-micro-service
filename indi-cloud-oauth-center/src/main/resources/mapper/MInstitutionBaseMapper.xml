@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="indi.cloud.oauth.center.base.dao.MInstitutionBaseMapper">
+  <resultMap id="BaseResultMap" type="indi.cloud.oauth.center.base.model.MInstitutionBase">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="organization_nature" jdbcType="VARCHAR" property="organizationNature" />
+    <result column="organization_code_flag" jdbcType="TINYINT" property="organizationCodeFlag" />
+    <result column="organization_code" jdbcType="VARCHAR" property="organizationCode" />
+    <result column="organization_scale" jdbcType="VARCHAR" property="organizationScale" />
+    <result column="industry_first" jdbcType="VARCHAR" property="industryFirst" />
+    <result column="industry_second" jdbcType="VARCHAR" property="industrySecond" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="office_address" jdbcType="VARCHAR" property="officeAddress" />
+    <result column="foundtime" jdbcType="DATE" property="foundtime" />
+    <result column="legal_name" jdbcType="VARCHAR" property="legalName" />
+    <result column="office_phone_areacode" jdbcType="VARCHAR" property="officePhoneAreacode" />
+    <result column="office_phone" jdbcType="VARCHAR" property="officePhone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="web_site" jdbcType="VARCHAR" property="webSite" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_dep" jdbcType="VARCHAR" property="contactDep" />
+    <result column="contact_job" jdbcType="VARCHAR" property="contactJob" />
+    <result column="contact_phone_areacode" jdbcType="VARCHAR" property="contactPhoneAreacode" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contact_phone_num" jdbcType="VARCHAR" property="contactPhoneNum" />
+    <result column="contact_email" jdbcType="VARCHAR" property="contactEmail" />
+    <result column="contact_wechat" jdbcType="VARCHAR" property="contactWechat" />
+    <result column="contact_qq" jdbcType="VARCHAR" property="contactQq" />
+    <result column="examine_reason" jdbcType="VARCHAR" property="examineReason" />
+    <result column="examinestate" jdbcType="TINYINT" property="examinestate" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="expired" jdbcType="TIMESTAMP" property="expired" />
+    <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+</mapper>
