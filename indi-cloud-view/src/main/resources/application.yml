@@ -1,0 +1,102 @@
+auth-center: http://192.168.14.90:20001
+spring:
+  application:
+    name: indi-cloud-view
+  freemarker:
+    # 设置模板后缀名
+    suffix: .html
+    # 设置文档类型
+    content-type: text/html
+    # 设置页面编码格式
+    charset: UTF-8
+    # 设置页面缓存
+    cache: false
+    setting.number_format: #
+    # 设置ftl文件路径
+    template-loader-path:
+      #      - classpath:/templates
+      file:E:\CCX3\trunk\05 Source\resources\credit-risk-view\templates
+
+    request-context-attribute: request
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  #spring.http.multipart.max-file-size=20Mb
+  # 设置静态文件路径，js,css等
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: file:E:\CCX3\trunk\05 Source\resources\credit-risk-view\static\
+  security:
+    oauth2:
+      client:
+        registration:
+          auth-center:
+            client-id: indi-view
+            client-secret: secret
+            client-authentication-method: basic  #basic or post
+            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-name: credit-view
+            authorization-grant-type: authorization_code
+            scope: all
+        provider:
+          auth-center:
+            authorization-uri: ${auth-center}/oauth/authorize
+            token-uri: ${auth-center}/oauth/token
+            token-info-uri: ${auth-center}/oauth/check_token
+            user-info-uri: ${auth-center}/api/user-info
+            logout-uri: ${auth-center}/logout
+            default-success-url: http://127.0.0.1:9010/
+            #            user-info-authentication-method: get
+            user-name-attribute: name
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
+
+eureka:
+  client:
+    security:
+      user: register
+      password: qaz2019
+    serviceUrl:
+      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@192.168.14.90:8001/eureka/ #注册中心的注册地址
+    healthcheck:
+      enabled: true #开启健康检查
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}  #将Instance ID设置为IP:端口的形式
+    lease-renewal-interval-in-seconds: 30 #每间隔1s，向服务端发送一次心跳，证明自己依然”存活“
+    lease-expiration-duration-in-seconds: 90  # 告诉服务端，如果我2s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
+server:
+  port: 9010 #服务端口号
+  servlet:
+    session:
+      timeout: 120m #2小时
+
+#  servlet:
+#    context-path:  /ccrm/*
+indi:
+  cloud:
+      api:
+        url: http://credit-risk-api-yyf
+jwt:
+  #JWT 秘钥
+  secret:
+    key: ffbde1d9-f9f8-4037-81bf-0fc93b6a75b9
+    base64: ZmZiZGUxZDktZjlmOC00MDM3LTgxYmYtMGZjOTNiNmE3NWI5
+  # token有效时间  单位秒
+  token:
+    expire: 28800
+
+
+script-version: 20190523193900
+
+# 默认通行各api-token
+default-token: D:\CCX3\05 Source\resources\open-api\ccx-token.txt
+
+
