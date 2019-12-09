@@ -1,22 +1,7 @@
-auth-center: http://192.168.14.90:20001
+auth-center: http://47.102.142.176:20001
 spring:
   application:
     name: indi-cloud-view
-  freemarker:
-    # 设置模板后缀名
-    suffix: .html
-    # 设置文档类型
-    content-type: text/html
-    # 设置页面编码格式
-    charset: UTF-8
-    # 设置页面缓存
-    cache: false
-    setting.number_format: #
-    # 设置ftl文件路径
-    template-loader-path:
-      #      - classpath:/templates
-      file:E:\CCX3\trunk\05 Source\resources\credit-risk-view\templates
-
     request-context-attribute: request
   servlet:
     multipart:
@@ -27,8 +12,12 @@ spring:
   # 设置静态文件路径，js,css等
   mvc:
     static-path-pattern: /static/**
-  resources:
-    static-locations: file:E:\CCX3\trunk\05 Source\resources\credit-risk-view\static\
+    view:
+      suffix: .html
+      prefix: E:/INDI/Source/cloud/indi-cloud-micro-service/resources/templates
+  #resources:
+   # static-locations: file:E:\INDI\Source\cloud\indi-cloud-micro-service\resources\static
+
   security:
     oauth2:
       client:
@@ -64,7 +53,7 @@ eureka:
       user: register
       password: qaz2019
     serviceUrl:
-      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@192.168.14.90:8001/eureka/ #注册中心的注册地址
+      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@47.102.142.176:8001/eureka/ #注册中心的注册地址
     healthcheck:
       enabled: true #开启健康检查
   instance:
@@ -83,7 +72,7 @@ server:
 indi:
   cloud:
       api:
-        url: http://credit-risk-api-yyf
+        url: http://indi-cloud-api
 jwt:
   #JWT 秘钥
   secret:
