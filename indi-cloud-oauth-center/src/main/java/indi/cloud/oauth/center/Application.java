@@ -7,7 +7,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("ccx.cloud.oauth.center.base.dao")
+@MapperScan("indi.cloud.oauth.center.base.dao")
 public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

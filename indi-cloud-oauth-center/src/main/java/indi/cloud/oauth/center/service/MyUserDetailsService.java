@@ -52,23 +52,23 @@ public class MyUserDetailsService implements UserDetailsService {
 
         MInstitutionBase institutionBase = getInstitution(tUserBase.getInstitutionUid());
 
-        // 机构不存在
-        if(institutionBase == null ||  (institutionBase.getDeleteFlag() != null && institutionBase.getDeleteFlag() == 1)){
-            log.info("登录用户所属机构【institution_uid = " + tUserBase.getInstitutionUid() + "】不存在.");
-            throw new UsernameNotFoundException(Message.getUserNotFound());
-        }
-
-        // 机构被锁定
-         if(institutionBase.getState() != null && institutionBase.getState() == 2){
-             log.info("登录用户所属机构【institution_uid = " + tUserBase.getInstitutionUid() + "】已停用.");
-             throw new UsernameNotFoundException(Message.getInstitutionDisabled());
-         }
-
-        // 机构已过期
-        if(institutionBase.getExpired() != null && institutionBase.getExpired().getTime() < new Date().getTime()){
-            log.info("登录用户所属机构【institution_uid = " + tUserBase.getInstitutionUid() + "】已过期.");
-            throw new UsernameNotFoundException(Message.getInstitutionExpired());
-        }
+//        // 机构不存在
+//        if(institutionBase == null ||  (institutionBase.getDeleteFlag() != null && institutionBase.getDeleteFlag() == 1)){
+//            log.info("登录用户所属机构【institution_uid = " + tUserBase.getInstitutionUid() + "】不存在.");
+//            throw new UsernameNotFoundException(Message.getUserNotFound());
+//        }
+//
+//        // 机构被锁定
+//         if(institutionBase.getState() != null && institutionBase.getState() == 2){
+//             log.info("登录用户所属机构【institution_uid = " + tUserBase.getInstitutionUid() + "】已停用.");
+//             throw new UsernameNotFoundException(Message.getInstitutionDisabled());
+//         }
+//
+//        // 机构已过期
+//        if(institutionBase.getExpired() != null && institutionBase.getExpired().getTime() < new Date().getTime()){
+//            log.info("登录用户所属机构【institution_uid = " + tUserBase.getInstitutionUid() + "】已过期.");
+//            throw new UsernameNotFoundException(Message.getInstitutionExpired());
+//        }
 
         SysAccount sysAccount = new SysAccount();
         BeanUtils.copyProperties(tUserBase, sysAccount);
