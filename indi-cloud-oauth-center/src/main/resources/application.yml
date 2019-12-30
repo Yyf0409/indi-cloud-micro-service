@@ -3,7 +3,7 @@ server:
   servlet:
     session:
       cookie:
-        name: ccx_oauth_center_session
+        name: indi_oauth_center_session
 spring:
   application:
     name: auth-center-local
@@ -11,14 +11,14 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
    # type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.14.85:3306/ccx_credit_risk_v3?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://47.102.142.176:3306/indi_database?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
-    password: root
+    password: 123456
     platform: mysql
 
   freemarker:
     # 设置模板后缀名
-    suffix: .jsp
+    suffix: .html
     # 设置文档类型
     content-type: text/html
     # 设置页面编码格式
@@ -40,7 +40,7 @@ spring:
 # mybatis 配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: ccx.cloud.oauth.center.model
+  type-aliases-package: indi.cloud.oauth.center.model
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
@@ -56,7 +56,7 @@ eureka:
       user: register
       password: qaz2019
     serviceUrl:
-      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@192.168.14.90:8001/eureka/ #注册中心的注册地址
+      defaultZone: http://47.102.142.176:8001/eureka/ #注册中心的注册地址(注册到8002， 系统数据同步到8001)
     healthcheck:
       enabled: true #开启健康检查
   instance:

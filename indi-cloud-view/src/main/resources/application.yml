@@ -8,16 +8,6 @@ spring:
       enabled: true
       max-file-size: 20MB
       max-request-size: 20MB
-  #spring.http.multipart.max-file-size=20Mb
-  # 设置静态文件路径，js,css等
-  mvc:
-    static-path-pattern: /static/**
-    view:
-      suffix: .html
-      prefix: E:/INDI/Source/cloud/indi-cloud-micro-service/resources/templates
-  #resources:
-   # static-locations: file:E:\INDI\Source\cloud\indi-cloud-micro-service\resources\static
-
   security:
     oauth2:
       client:
@@ -61,6 +51,7 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}  #将Instance ID设置为IP:端口的形式
     lease-renewal-interval-in-seconds: 30 #每间隔1s，向服务端发送一次心跳，证明自己依然”存活“
     lease-expiration-duration-in-seconds: 90  # 告诉服务端，如果我2s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
+    ip-address: 47.102.142.176
 server:
   port: 9010 #服务端口号
   servlet:

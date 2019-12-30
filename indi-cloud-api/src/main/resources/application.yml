@@ -1,0 +1,62 @@
+server:
+  port: 9001 #服务端口号
+spring:
+  application:
+    name: indi-cloud-api
+    #数据库配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+   # type: com.alibaba.druid.pool.DruidDataSource
+#    url: jdbc:mysql://192.168.14.85:3306/ccx_credit_risk_v3?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+#    username: root
+#    password: root
+    url: jdbc:mysql://47.102.142.176:3306/indi_database?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    platform: mysql
+  jackson:
+    #date-format: yyyy-MM-dd HH:mm:ss.SSS
+    serialization.write-dates-as-timestamps: true
+eureka:
+  client:
+    security:
+      user: register
+      password: qaz2019
+    serviceUrl:
+      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@192.168.14.90:8001/eureka/ #注册中心的注册地址
+    healthcheck:
+      enabled: true #开启健康检查
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}  #将Instance ID设置为IP:端口的形式
+    lease-renewal-interval-in-seconds: 1 #每间隔1s，向服务端发送一次心跳，证明自己依然”存活“
+    lease-expiration-duration-in-seconds: 2  # 告诉服务端，如果我2s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
+
+# 分页插件配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  page-size-zero: true
+  support-methods-arguments: true
+  params: count=countSql
+
+# mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: indi.cloud.api.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+# 通用 Mapper 配置
+mapper:
+  identity: MYSQL
+  not-empty: false
+  mappers: indi.cloud.api.base.core.Mapper
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+
+
